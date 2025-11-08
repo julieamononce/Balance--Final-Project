@@ -1,1 +1,1 @@
-# Balanced--Final-Project
+# AI Journal Assistant
