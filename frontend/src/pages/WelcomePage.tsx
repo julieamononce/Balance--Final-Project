@@ -1,5 +1,7 @@
-export default function WelcomepPage() {
+import { useState } from "react";
+export default function WelcomePage() {
     return (
+
     <div>
         <h1 className="text-5xl font-bold text-white mb-4">Balance</h1>
         <p className="text-lg text-white/90 mb-12 max-w-xl">
@@ -9,7 +11,7 @@ export default function WelcomepPage() {
             Choose your mode to continue your journey
             </p>
 
-        <h2 className="text-2xl font-semibold">Reflective Mode</h2>
+        <h2 className="text-2xl font-semibold">Reflect Mode</h2>
                 <p className="text-muted-foreground">
                 Check in with your emotions, reflect on your well-being, and practice mindfulness. 
                 A space for self-awareness and balance.
@@ -24,7 +26,7 @@ export default function WelcomepPage() {
                 <h2 className="font-medium text-foreground">About Balanced:</h2>
         <p>
             A human-centered AI tool that helps you balance productivity with emotional well-being. 
-            Choose between <span className="text-primary font-medium">Reflective Mode</span> for mindfulness 
+            Choose between <span className="text-primary font-medium">Reflect Mode</span> for mindfulness 
             and <span className="text-secondary font-medium">Focus Mode</span> for academic support.
         </p>
 
