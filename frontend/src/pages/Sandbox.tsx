@@ -11,8 +11,8 @@ export default function ComponentSandbox(){
 return (
     <div className="p-6 space-y-6">
         <h2 className="font-bold text-xl">MessageBubblePreview</h2>
-        <MessageBubble sender="user" text="This is a user bubble." />
-        <MessageBubble sender="ai" text="This is an AI bubble." />
+        <MessageBubble sender="user" text="This is a user bubble." mode="focus" />
+        <MessageBubble sender="ai" text="This is an AI bubble." mode="focus" />
         <h2 className="font-bold text-xl pt-6">MessageList Preview</h2>
         <div className="border rounded-lg h-64">
             <MessageList messages={fakeMessages} />

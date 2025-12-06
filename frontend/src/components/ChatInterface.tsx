@@ -101,17 +101,21 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
                   : '-translate-y-4 opacity-0 pt-8' // Initial position for entrance
             }`}>
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-white flex items-center justify-center shadow-lg">
+                <div className={`w-20 h-20 mx-auto mb-4 rounded-full bg-white flex items-center justify-center shadow-lg ${
+                  hasEntered ? 'animate-bounce' : ''
+                }`} style={{ animationDelay: '0.1s', animationDuration: '1.5s', animationIterationCount: '10' }}>
                   <img src={iconmode} alt="mode icon" className="w-13 h-13" />
                 </div>
-                <p className="text-foreground/80 text-lg px-6">
+                <p className={`text-foreground/40 text-lg px-6 ${
+                  hasEntered ? 'animate-bounce' : ''
+                }`} style={{ animationDelay: '0.1s', animationDuration: '1.5s', animationIterationCount: '10' }}>
                   {greetingText}
                 </p>
               </div>
             </div>
           ) : (
             <div className="flex-1 overflow-y-auto mb-4 max-h-[60vh]">
-              <MessageList messages={messages} />
+              <MessageList messages={messages} mode={mode} />
             </div>
           )}
 

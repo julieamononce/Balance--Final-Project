@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import ChatMessage from "./ChatMessage";
 
-export default function MessageList({ messages }: { messages: any[] }) {
+export default function MessageList({ messages, mode }: { messages: any[], mode: "reflect" | "focus" }) {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -19,6 +19,7 @@ export default function MessageList({ messages }: { messages: any[] }) {
         key={index}
         sender={msg.sender}
         text={msg.text}
+        mode={mode}
         />
         ))}
         <div ref={messagesEndRef} />
