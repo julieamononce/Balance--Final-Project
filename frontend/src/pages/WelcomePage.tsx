@@ -26,7 +26,7 @@ export default function WelcomePage() {
 
                 <div className="flex justify-center mt-8">
                     <p className="text-1xs text-gray-600">
-                        Balance is a supportive tool for your academic journay, not a replacement for 
+                        Balance is a supportive AI tool for your academic journey, not a replacement for 
                         professional mental health care. We encourage you to see appropriate 
                         resources when needed. 
                     </p>
