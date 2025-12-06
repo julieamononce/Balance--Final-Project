@@ -1,37 +1,43 @@
 import { useState } from "react";
+import Card from "../components/Card";
 export default function WelcomePage() {
     return (
 
     <div>
-        <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-blue-100 to-purple-200">
+        <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-blue-200 to-purple-300">
         
-        <h1 className="text-3xl font-bold text-gradient">Balance</h1>
-        <p className="text-lg text-white/90 mb-12 max-w-xl">
-        Your companion for academic success and mental well-being</p>
+        <div className="mb-6 px-5">
+                <header className="mb-4 text-center -mt-10">
+                <div>
+                    <h1 className="text-7xl font-bold text-white -mt-20">Balance</h1>
+                    <p className="text-3xl text-white mt-3">Your companion for academic success and mental well-being</p>
+                </div>
 
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Choose your mode to continue your journey
-            </p>
+                </header>
+                <div className="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 ml-20 mt-20">
+                    <Card title = "Focus Mode" description="Study assistance with note summaries and organized to-dos." image = "/focusicon.png" shadow="shadow-lg shadow-purple-900/50" className="bg-transparent" width="w-90"/>
+                    <Card title = "Reflect Mode" description="Check in with your emotions, reflect on your well-being." image = "/reflecticon.png" shadow="shadow-lg shadow-blue-900/50" className="bg-transparent" width="w-95"/>
+                    <Card title = "Calendar" description="Track your emotions, journals, assignments & upcoming exams." image = "/calendaricon.png" shadow="shadow-lg shadow-pink-500/50" className="bg-transparent" width="w-90"/> 
+                </div>
 
-        <h2 className="text-2xl font-semibold">Reflect Mode</h2>
-                <p className="text-muted-foreground">
-                Check in with your emotions, reflect on your well-being, and practice mindfulness. 
-                A space for self-awareness and balance.
-                </p>
+                <div className="flex justify-center">
+                    <button className="mt-8 px-6 py-3 rounded-lg text-black font-medium transition-all duration-300 hover:shadow-lg bg-white hover:bg-gray-100">Get Started</button>
+                </div>
+
+                <div className="flex justify-center mt-8">
+                    <p className="text-1xs text-gray-600">
+                        Balance is a supportive tool for your academic journay, not a replacement for 
+                        professional mental health care. We encourage you to see appropriate 
+                        resources when needed. 
+                    </p>
+                </div>
+
+                
+        </div>
+
+        </div>
+
         
-        <h2 className="text-2xl font-semibold">Focus Mode</h2>
-                <p className="text-muted-foreground">
-                Get help with study strategies, summarize your notes, and organize your academic tasks. 
-                Your productivity companion.
-                </p>
-
-                <h2 className="font-medium text-foreground">About Balanced:</h2>
-        <p>
-            A human-centered AI tool that helps you balance productivity with emotional well-being. 
-            Choose between <span className="text-primary font-medium">Reflect Mode</span> for mindfulness 
-            and <span className="text-secondary font-medium">Focus Mode</span> for academic support.
-        </p>
-    </div>
     </div>
 
     

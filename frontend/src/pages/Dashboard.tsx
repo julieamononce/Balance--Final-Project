@@ -21,7 +21,7 @@ export default function Dashboard() {
             </div>
         
 
-            <div className="grid justify-center grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4 pl-5">
+            <div className="grid justify-center grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-4 pl-5 ml-9">
                 <Card title = "Focus Mode" description="Study smarter. Summarize notes, organize tasks, and get personalized study support." link = "/focus" image = "/focusicon.png" shadow="shadow-lg shadow-purple-900/50"/>
                 <Card title = "Reflect Mode" description="Check in with yourself. Mindful prompts for emotional awareness and self-reflection." link = "/reflect" image = "/reflecticon.png" shadow="shadow-lg shadow-blue-900/50"/>
                 <Card title = "Calendar" description="View patterns in emotions, journals, and your upcoming exams/assignments." link = "/calendar" image = "/calendaricon.png" shadow="shadow-lg shadow-pink-500/50"/> 

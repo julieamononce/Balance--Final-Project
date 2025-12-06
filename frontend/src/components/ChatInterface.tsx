@@ -30,7 +30,7 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
       ? "bg-gradient-to-br from-blue-50 via-blue-100 to-white"
       : "bg-gradient-to-br from-purple-100 via-purple-50 to-white";
 
-  // Start with no messages so greeting shows
+  // Start with no messages so greeting shows, slide up animation on first message
   const [messages, setMessages] = useState<any[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
@@ -88,7 +88,7 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
         <div className="w-20" />
       </div>
 
-      {/* Chat Layout  */}
+      {/* Chat Layout , A couple of animations are here */}
       <div className="flex h-full gap-6 p-6">
         <div className="flex flex-col flex-1 bg-white/90 rounded-3xl shadow-xl p-6">
           {/* Greeting */}
@@ -100,6 +100,7 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
                   ? 'pt-8' // Final position after entrance
                   : '-translate-y-4 opacity-0 pt-8' // Initial position for entrance
             }`}>
+
               <div className="text-center">
                 <div className={`w-20 h-20 mx-auto mb-4 rounded-full bg-white flex items-center justify-center shadow-lg ${
                   hasEntered ? 'animate-bounce' : ''
