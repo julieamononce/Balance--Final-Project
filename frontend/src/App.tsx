@@ -5,6 +5,7 @@ import ChatInterface from './components/ChatInterface';
 import Sandbox from './pages/Sandbox';
 import HistoryList from './components/HistoryList';
 import ReflectChat from './pages/ReflectChat';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
         <Route path="/sandbox" element={<Sandbox />} />
         <Route path="/focus" element={<FocusChat />} />
         <Route path="/reflect" element={<ReflectChat />} />
+        <Route path = "/dashboard" element={<Dashboard />} />
 
         <Route 
           path="/interface" 
@@ -27,7 +29,8 @@ function App() {
           } 
         />
 
-        <Route path ="/history" element ={<HistoryList />} />
+        <Route path="/history/focus" element={<HistoryList mode="focus" />} />
+        <Route path="/history/reflect" element={<HistoryList mode="reflect" />} />
   
       </Routes>
     </div>

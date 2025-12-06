@@ -7,6 +7,7 @@ export default function FocusChat() {
             mode="focus"
             title="Focus Mode"
             description="Study assistance and academic organization."
+            
         />
         </div>
     );

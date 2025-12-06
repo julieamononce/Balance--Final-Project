@@ -3,7 +3,9 @@ export default function WelcomePage() {
     return (
 
     <div>
-        <h1 className="text-5xl font-bold text-white mb-4">Balance</h1>
+        <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-blue-100 to-purple-200">
+        
+        <h1 className="text-3xl font-bold text-gradient">Balance</h1>
         <p className="text-lg text-white/90 mb-12 max-w-xl">
         Your companion for academic success and mental well-being</p>
 
@@ -29,7 +31,7 @@ export default function WelcomePage() {
             Choose between <span className="text-primary font-medium">Reflect Mode</span> for mindfulness 
             and <span className="text-secondary font-medium">Focus Mode</span> for academic support.
         </p>
-
+    </div>
     </div>
 
     

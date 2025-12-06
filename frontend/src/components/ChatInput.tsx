@@ -2,10 +2,12 @@ import { useState } from "react";
 
 export default function ChatInput({
   onSend,
-  placeholderText
+  placeholderText,
+  mode
 }: {
   onSend: (msg: string) => void;
   placeholderText: string;
+  mode: "reflect" | "focus";
 }) {
   const [input, setInput] = useState("");
 
@@ -34,7 +36,12 @@ export default function ChatInput({
 
       <button
         onClick={handleSend}
-        className="p-3 rounded-xl bg-purple-400 hover:bg-purple-500 transition"
+        className={`p-3 rounded-xl transition ${
+          mode === "reflect" 
+            ? "bg-blue-400 hover:bg-blue-500" 
+            : "bg-purple-400 hover:bg-purple-500"
+            
+        }`}
       >
         Send
       </button>
