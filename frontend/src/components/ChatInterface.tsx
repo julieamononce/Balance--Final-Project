@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ChatInput from "./ChatInput";
 import MessageList from "./MessageList";
 import HistoryList from "./HistoryList";
@@ -24,7 +24,7 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
     ? "How can I help you with your academic success?"
     : "What's on your mind?";
 
-  // ⭐ Tailwind-only gradients — NO custom CSS needed
+
   const backgroundGradient =
     mode === "reflect"
       ? "bg-gradient-to-br from-blue-50 via-blue-100 to-white"
@@ -34,7 +34,6 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
   const [messages, setMessages] = useState<any[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Entrance animation on component mount
   useEffect(() => {
@@ -43,11 +42,6 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
     }, 100);
     return () => clearTimeout(timer);
   }, []);
-
-  // Auto-scroll to bottom when messages change
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
 
   const greetingText =
     mode === "reflect"
@@ -118,7 +112,6 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
           ) : (
             <div className="flex-1 overflow-y-auto mb-4 max-h-[60vh]">
               <MessageList messages={messages} />
-              <div ref={messagesEndRef} />
             </div>
           )}
 

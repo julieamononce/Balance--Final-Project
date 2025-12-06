@@ -1,8 +1,19 @@
+import { useEffect, useRef } from "react";
 import ChatMessage from "./ChatMessage";
 
 export default function MessageList({ messages }: { messages: any[] }) {
+    const messagesEndRef = useRef<HTMLDivElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // Auto-scroll to bottom when messages change
+    useEffect(() => {
+        if (containerRef.current) {
+            containerRef.current.scrollTop = containerRef.current.scrollHeight;
+        }
+    }, [messages]);
+
     return (
-    <div className="flex flex-col h-full overflow-y-auto pr-2">
+    <div ref={containerRef} className="flex flex-col h-full overflow-y-auto pr-2">
         {messages.map((msg, index) => (
         <ChatMessage
         key={index}
@@ -10,6 +21,7 @@ export default function MessageList({ messages }: { messages: any[] }) {
         text={msg.text}
         />
         ))}
+        <div ref={messagesEndRef} />
     </div>
     );
 }
