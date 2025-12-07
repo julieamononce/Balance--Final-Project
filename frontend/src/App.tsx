@@ -19,7 +19,7 @@ import Dashboard from "./pages/Dashboard";
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      
         <Routes>
 
           {/*PUBLIC ROUTES  */}
@@ -131,7 +131,7 @@ function App() {
           />
 
         </Routes>
-      </BrowserRouter>
+      
     </AuthProvider>
   );
 }
