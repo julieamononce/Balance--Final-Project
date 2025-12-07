@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
@@ -10,7 +10,6 @@ import { AuthProvider } from "./auth/AuthProvider";
 import WelcomePage from "./pages/WelcomePage";
 import FocusChat from "./pages/FocusChat";
 import ChatInterface from "./components/ChatInterface";
-import Sandbox from "./pages/Sandbox";
 import HistoryList from "./components/HistoryList";
 import ReflectChat from "./pages/ReflectChat";
 
@@ -75,15 +74,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <ReflectChat />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/sandbox"
-            element={
-              <ProtectedRoute>
-                <Sandbox />
               </ProtectedRoute>
             }
           />
