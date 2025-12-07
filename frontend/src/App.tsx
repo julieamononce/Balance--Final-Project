@@ -1,11 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import RedirectIfAuthenticated from "./auth/RedirectIfAuthenticated";
 import { AuthProvider } from "./auth/AuthProvider";
-import Dashboard from "./pages/Dashboard"; // <-- ADD THIS
+
+import WelcomePage from "./pages/WelcomePage";
+import FocusChat from "./pages/FocusChat";
+import ChatInterface from "./components/ChatInterface";
+import Sandbox from "./pages/Sandbox";
+import HistoryList from "./components/HistoryList";
+import ReflectChat from "./pages/ReflectChat";
+
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -13,7 +22,7 @@ function App() {
       <BrowserRouter>
         <Routes>
 
-          {/* PUBLIC BUT REDIRECT IF LOGGED IN */}
+          {/*PUBLIC ROUTES  */}
           <Route
             path="/login"
             element={
@@ -32,17 +41,17 @@ function App() {
             }
           />
 
-          {/* DEFAULT ROUTE */}
+          {/* DEFAULT ROOT → show welcome page */}
           <Route
             path="/"
             element={
               <RedirectIfAuthenticated>
-                <Login />
+                <WelcomePage />
               </RedirectIfAuthenticated>
             }
           />
 
-          {/* USER DASHBOARD */}
+          {/* 🔹 PROTECTED USER ROUTES */}
           <Route
             path="/dashboard"
             element={
@@ -52,16 +61,74 @@ function App() {
             }
           />
 
-          {/* ADMIN ROUTE */}
-        <Route
-          path="/admin"
-          element={
-            <ProtectedRoute roles={["admin"]}>
-              <AdminDashboard />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/focus"
+            element={
+              <ProtectedRoute>
+                <FocusChat />
+              </ProtectedRoute>
+            }
+          />
 
+          <Route
+            path="/reflect"
+            element={
+              <ProtectedRoute>
+                <ReflectChat />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/sandbox"
+            element={
+              <ProtectedRoute>
+                <Sandbox />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/history/focus"
+            element={
+              <ProtectedRoute>
+                <HistoryList mode="focus" />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/history/reflect"
+            element={
+              <ProtectedRoute>
+                <HistoryList mode="reflect" />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Testing route for chat interface */}
+          <Route
+            path="/interface"
+            element={
+              <ProtectedRoute>
+                <ChatInterface
+                  mode="focus"
+                  title="Preview Chat Interface"
+                  description="This is just for testing."
+                />
+              </ProtectedRoute>
+            }
+          />
+
+          {/* ADMIN-ONLY ROUTE */}
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoute roles={["admin"]}>
+                <AdminDashboard />
+              </ProtectedRoute>
+            }
+          />
 
         </Routes>
       </BrowserRouter>

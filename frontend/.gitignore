@@ -22,8 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-VITE_SUPABASE_URL=YOUR_URL_HERE
-VITE_SUPABASE_ANON_KEY=YOUR_KEY_HERE
-.env
-frontend/.env
-.env.local
