@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { supabase } from "../auth/supabaseClient";
+import { supabase } from "../../../backend/src/auth/supabaseClient";
 import type { FormEvent } from "react";
 
 export default function Login() {

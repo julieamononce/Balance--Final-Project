@@ -1,4 +1,4 @@
-import { supabase } from "../auth/supabaseClient";
+import { supabase } from "../../../backend/src/auth/supabaseClient";
 import Card from "../components/Card";
 
 export default function Dashboard() {

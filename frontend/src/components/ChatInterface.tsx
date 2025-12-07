@@ -48,20 +48,34 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
       ? "Hi! I'm here to listen. How are you feeling today?"
       : "Hi! Ready to study? Share your notes or ask me anything.";  
 
-  const handleSend = (text: string) => {
-    if (messages.length === 0) {
-      // Trigger animation
-      setIsAnimating(true);
-      // Add message after animation delay
-      setTimeout(() => {
-        const newMessage = { sender: "user", text };
-        setMessages((prev) => [...prev, newMessage]);
-      }, 500);
-    } else {
-      const newMessage = { sender: "user", text };
-      setMessages((prev) => [...prev, newMessage]);
-    }
-  };
+  const handleSend = async (text: string) => {
+  const userMessage = { sender: "user", text };
+  setMessages((prev) => [...prev, userMessage]);
+
+  try {
+    const response = await fetch("http://localhost:5001/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: text,
+        mode: mode,              // "reflect" or "focus"
+      }),
+    });
+
+    const data = await response.json();
+
+    const aiMessage = {
+      sender: "ai",
+      text: data.reply,
+    };
+
+    setMessages((prev) => [...prev, aiMessage]);
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 ;
 
 

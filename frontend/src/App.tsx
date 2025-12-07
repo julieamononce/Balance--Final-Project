@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
-import ProtectedRoute from "./auth/ProtectedRoute";
-import RedirectIfAuthenticated from "./auth/RedirectIfAuthenticated";
-import { AuthProvider } from "./auth/AuthProvider";
+import ProtectedRoute from "../../backend/src/auth/ProtectedRoute";
+import RedirectIfAuthenticated from "../../backend/src/auth/RedirectIfAuthenticated";
+import { AuthProvider } from "../../backend/src/auth/AuthProvider";
 
 import WelcomePage from "./pages/WelcomePage";
 import FocusChat from "./pages/FocusChat";
@@ -50,7 +50,7 @@ function App() {
             }
           />
 
-          {/* 🔹 PROTECTED USER ROUTES */}
+          {/* PROTECTED USER ROUTES */}
           <Route
             path="/dashboard"
             element={

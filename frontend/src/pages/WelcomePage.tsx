@@ -1,7 +1,13 @@
-import { useState } from "react";
+
 import Card from "../components/Card";
+import { useNavigate } from "react-router-dom";
+
+
+
 export default function WelcomePage() {
-    return (
+  const navigate = useNavigate();
+
+  return (
 
     <div>
         <div className="min-h-screen flex flex-col justify-center bg-gradient-to-b from-blue-200 to-purple-300">
@@ -21,7 +27,13 @@ export default function WelcomePage() {
                 </div>
 
                 <div className="flex justify-center">
-                    <button className="mt-8 px-6 py-3 rounded-lg text-black font-medium transition-all duration-300 hover:shadow-lg bg-white hover:bg-gray-100">Get Started</button>
+                    <button
+                      onClick={() => navigate("/dashboard")}   // <-- change route here
+                      className="mt-8 px-6 py-3 rounded-lg text-black font-medium transition-all duration-300 hover:shadow-lg bg-white hover:bg-gray-100"
+                    >
+                      Get Started
+                    </button>
+
                 </div>
 
                 <div className="flex justify-center mt-8">

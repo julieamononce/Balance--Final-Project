@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { supabase } from "../auth/supabaseClient";
+import { supabase } from "../../../backend/src/auth/supabaseClient";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
