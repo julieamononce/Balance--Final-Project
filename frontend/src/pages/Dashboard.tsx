@@ -9,14 +9,18 @@ export default function Dashboard() {
 
             <div className="mb-6 px-5">
                 <header className="mb-4 flex justify-between items-start">
-                <div>
-                    <h1 className="text-6xl font-bold">Welcome!</h1>
-                    <p className="text-xl text-gray-500">How can Balance support you today?</p>
-                </div>
+                    <div>
+                        <div className="flex items-center gap-3">
+                            <img src="/BalanceLogo.png" alt="Balance Logo" className="w-25 h-25 gap-5"/>
+                            <h1 className="text-6xl font-bold ">Balance</h1>
+                            
+                        </div>
+                        <p className="text-xl text-gray-500">How can Balance support you today?</p>
+                    </div>
 
-                <div className="flex gap-2">
-                    <button className= "px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 hover:shadow-lg bg-pink-300 hover:bg-pink-600" >Sign out</button>
-                </div>
+                    <div className="flex items-end">
+                        <button className= "px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 hover:shadow-lg bg-pink-300 hover:bg-pink-600" >Sign out</button>
+                    </div>
                 </header>
             </div>
         

@@ -9,12 +9,13 @@ export default function WelcomePage() {
         <div className="mb-6 px-5">
                 <header className="mb-4 text-center -mt-10">
                 <div>
-                    <h1 className="text-7xl font-bold text-white -mt-20">Balance</h1>
+                    <img src="./public/BalanceLogo.png" alt="Balance Logo" className="mx-auto w-32 h-32 -mt-15"/>
+                    <h1 className="text-7xl font-bold text-white -mt-1">Balance</h1>
                     <p className="text-3xl text-white mt-3">Your companion for academic success and mental well-being</p>
                 </div>
 
                 </header>
-                <div className="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 ml-20 mt-20">
+                <div className="grid justify-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 ml-20 mt-10">
                     <Card title = "Focus Mode" description="Study assistance with note summaries and organized to-dos." image = "/focusicon.png" shadow="shadow-lg shadow-purple-900/50" className="bg-transparent" width="w-90"/>
                     <Card title = "Reflect Mode" description="Check in with your emotions, reflect on your well-being." image = "/reflecticon.png" shadow="shadow-lg shadow-blue-900/50" className="bg-transparent" width="w-95"/>
                     <Card title = "Calendar" description="Track your emotions, journals, assignments & upcoming exams." image = "/calendaricon.png" shadow="shadow-lg shadow-pink-500/50" className="bg-transparent" width="w-90"/> 

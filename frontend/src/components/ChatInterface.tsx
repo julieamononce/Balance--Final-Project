@@ -76,7 +76,7 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
             className="border rounded-md px-3 py-2 text-sm hover:shadow-glow transition-all duration-300"
             onClick={() => navigate("/dashboard")}
           >
-            Back
+            Back to Dashboard
           </button>
         </div>
 
