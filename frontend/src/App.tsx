@@ -3,15 +3,16 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
 import AdminDashboard from "./pages/AdminDashboard";
-import ProtectedRoute from "../../backend/src/auth/ProtectedRoute";
-import RedirectIfAuthenticated from "../../backend/src/auth/RedirectIfAuthenticated";
-import { AuthProvider } from "../../backend/src/auth/AuthProvider";
+import ProtectedRoute from "./auth/ProtectedRoute";
+import RedirectIfAuthenticated from "./auth/RedirectIfAuthenticated";
+import { AuthProvider } from "./auth/AuthProvider";
 
 import WelcomePage from "./pages/WelcomePage";
 import FocusChat from "./pages/FocusChat";
 import ChatInterface from "./components/ChatInterface";
 import HistoryList from "./components/HistoryList";
 import ReflectChat from "./pages/ReflectChat";
+import Calendar from "./pages/Calendar";
 
 import Dashboard from "./pages/Dashboard";
 
@@ -77,6 +78,7 @@ function App() {
               </ProtectedRoute>
             }
           />
+           { <Route path = "/calendar" element ={ <ProtectedRoute><Calendar /></ProtectedRoute>} /> }
 
           <Route
             path="/history/focus"
