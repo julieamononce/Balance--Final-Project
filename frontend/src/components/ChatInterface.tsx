@@ -53,14 +53,17 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
   setMessages((prev) => [...prev, userMessage]);
 
   try {
-    const response = await fetch("http://localhost:5001/api/chat", {
+    const endpoint =
+      mode === "reflect"
+        ? "http://localhost:5001/api/reflect/chat"
+        : "http://localhost:5001/api/focus/chat";
+
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        message: text,
-        mode: mode,              // "reflect" or "focus"
-      }),
+      body: JSON.stringify({ message: text }),
     });
+
 
     const data = await response.json();
 

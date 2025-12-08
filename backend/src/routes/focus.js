@@ -1,8 +1,8 @@
 import express from "express";
-import { processFocusMessage } from "../controllers/focusController.js";
+import { handleFocusChat } from "../controllers/focusController.js";
 
 const router = express.Router();
 
-router.post("/", processFocusMessage);
+router.post("/chat", handleFocusChat);
 
 export default router;

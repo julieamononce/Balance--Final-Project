@@ -1,8 +1,8 @@
 import express from "express";
-import { handleJournalEntry } from "../controllers/reflectController.js";
+import { handleReflectChat } from "../controllers/reflectController.js";
 
 const router = express.Router();
 
-router.post("/", handleJournalEntry);
+router.post("/chat", handleReflectChat);
 
 export default router;
