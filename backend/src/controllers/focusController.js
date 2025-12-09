@@ -3,10 +3,19 @@ import { sendToOpenAI } from "../services/openAIService.js";
 
 export const handleFocusChat = async (req, res) => {
   try {
-    const { message } = req.body;
+    const { messages } = req.body;
 
-    const prompt = `${focusPrompt}\n\nUser: ${message}\nAI:`;
-    const reply = await sendToOpenAI(prompt);
+    if (!messages) {
+      return res.status(400).json({ error: "Missing messages array" });
+    }
+
+    // Insert system prompt at top
+    const formattedMessages = [
+      { role: "system", content: focusPrompt },
+      ...messages
+    ];
+
+    const reply = await sendToOpenAI(formattedMessages);
 
     return res.json({ reply });
 

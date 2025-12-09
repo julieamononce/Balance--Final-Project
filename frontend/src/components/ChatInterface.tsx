@@ -1,3 +1,4 @@
+//frontend/src/components/ChatInterface.tsx
 import { useState, useEffect } from "react";
 import ChatInput from "./ChatInput";
 import MessageList from "./MessageList";
@@ -61,8 +62,19 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
     const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: text }),
+      body: JSON.stringify({
+        mode,
+        messages: [
+          { role: "system", content: greetingText },
+          ...messages.map(m => ({
+            role: m.sender === "user" ? "user" : "assistant",
+            content: m.text
+          })),
+          { role: "user", content: text }
+        ]
+      }),
     });
+
 
 
     const data = await response.json();

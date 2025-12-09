@@ -3,10 +3,19 @@ import { sendToOpenAI } from "../services/openAIService.js";
 
 export const handleReflectChat = async (req, res) => {
   try {
-    const { message } = req.body;
+    const { messages } = req.body;
 
-    const prompt = `${reflectivePrompt}\n\nUser: ${message}\nAI:`;
-    const reply = await sendToOpenAI(prompt);
+    if (!messages) {
+      return res.status(400).json({ error: "Missing messages array" });
+    }
+
+    // Insert system prompt as the first message
+    const formattedMessages = [
+      { role: "system", content: reflectivePrompt },
+      ...messages
+    ];
+
+    const reply = await sendToOpenAI(formattedMessages);
 
     return res.json({ reply });
 
