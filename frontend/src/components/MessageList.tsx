@@ -20,6 +20,7 @@ export default function MessageList({ messages, mode }: { messages: any[], mode:
         sender={msg.sender}
         text={msg.text}
         mode={mode}
+        canvasData={msg.canvasData}
         />
         ))}
         <div ref={messagesEndRef} />

@@ -3,6 +3,7 @@ import ChatInput from "./ChatInput";
 import MessageList from "./MessageList";
 import HistoryList from "./HistoryList";
 import { useNavigate } from "react-router-dom";
+import {useAuth } from "../auth/AuthProvider";
 
 interface ChatInterfaceProps {
   mode: "reflect" | "focus";
@@ -12,6 +13,7 @@ interface ChatInterfaceProps {
 
 export default function ChatInterface({ mode, title, description }: ChatInterfaceProps) {
   const navigate = useNavigate();
+  const { user } = useAuth(); // Move useAuth to component level
   
   const iconmode =
     mode === "reflect"
@@ -21,7 +23,7 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
 
   const placeholderText =
   mode === "focus"
-    ? "How can I help you with your academic success?"
+    ? "How can I help you? Type \"What assignments do I have?\" for a quick overview."
     : "What's on your mind?";
 
 
@@ -30,7 +32,6 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
       ? "bg-gradient-to-br from-blue-50 via-blue-100 to-white"
       : "bg-gradient-to-br from-purple-100 via-purple-50 to-white";
 
-  // Start with no messages so greeting shows, slide up animation on first message
   const [messages, setMessages] = useState<any[]>([]);
   const [isAnimating, setIsAnimating] = useState(false);
   const [hasEntered, setHasEntered] = useState(false);
@@ -53,31 +54,58 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
   setMessages((prev) => [...prev, userMessage]);
 
   try {
-    const response = await fetch("http://localhost:5001/api/chat", {
+    // Check if user is authenticated
+    if (!user) {
+      console.error("User not authenticated");
+      return;
+    }
+
+    // Use mode-specific endpoint
+    const endpoint = `http://localhost:5001/api/${mode}`;
+    
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         message: text,
-        mode: mode,              // "reflect" or "focus"
+        userId: user.id
       }),
     });
 
     const data = await response.json();
+    
+    console.log('API Response:', data); // Debug log
+
+    if (!response.ok) {
+      console.error('API Error:', data);
+      const errorMessage = {
+        sender: "ai",
+        text: `Error: ${data.error || 'Something went wrong'}`,
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+      return;
+    }
+    //Added to check if reply is coming correctly
+    console.log('AI Reply:', data.reply); // Debug log
 
     const aiMessage = {
       sender: "ai",
-      text: data.reply,
+      // Changes were made here to ensure reply is displayed
+      text: data.reply || "No response received",
+      canvasData: data.canvasData
     };
 
     setMessages((prev) => [...prev, aiMessage]);
 
   } catch (err) {
-    console.error(err);
+    console.error('Fetch error:', err);
+    const errorMessage = {
+      sender: "ai",
+      text: "Sorry, I couldn't process your message. Please check the console for details.",
+    };
+    setMessages((prev) => [...prev, errorMessage]);
   }
 };
-
-;
-
 
   return (
     <div className={`min-h-screen ${backgroundGradient} p-6 flex flex-col`}>
