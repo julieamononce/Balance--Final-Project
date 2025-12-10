@@ -13,7 +13,7 @@ export const sendChatReply = async (req, res) => {
 
     const systemPrompt = getSystemPrompt(mode);
 
-    // Insert system prompt at start (required by OpenAI)
+    // Insert system 
     const formattedMessages = [
       { role: "system", content: systemPrompt },
       ...messages
