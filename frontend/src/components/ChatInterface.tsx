@@ -116,11 +116,13 @@ export default function ChatInterface({ mode, title, description }: ChatInterfac
 
         <div className="w-20" />
       </div>
+      
 
       {/* Chat Layout , A couple of animations are here */}
       <div className="flex h-full gap-6 p-6">
         <div className="flex flex-col flex-1 bg-white/90 rounded-3xl shadow-xl p-6">
           {/* Greeting */}
+          
           {messages.length === 0 ? (
             <div className={`h-full flex items-start justify-center animate-scale-in transition-all duration-500 ${
               isAnimating 

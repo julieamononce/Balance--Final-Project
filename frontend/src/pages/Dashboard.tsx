@@ -1,7 +1,11 @@
 import { supabase } from "../auth/supabaseClient";
 import Card from "../components/Card";
+import { CanvasSettingsModal } from "../components/CanvasSettings";
+import { useState } from "react";
+
 
 export default function Dashboard() {
+  const [isCanvasModalOpen, setIsCanvasModalOpen] = useState(false);
   return (
     <div className="min-h-screen flex flex-col justify-start bg-gradient-to-b from-blue-300 to-purple-200 pt-16">
 
@@ -17,12 +21,17 @@ export default function Dashboard() {
 
           {/* SIGN OUT (uses REAL supabase logout) */}
           <div className="flex gap-2">
+            <button onClick={() => setIsCanvasModalOpen(true)}
+            className="px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 hover:shadow-lg bg-blue-300 hover:bg-blue-600">
+              Settings
+            </button>
             <button
               onClick={() => supabase.auth.signOut()}
               className="px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 hover:shadow-lg bg-pink-300 hover:bg-pink-600"
             >
               Sign out
             </button>
+             <CanvasSettingsModal isOpen={isCanvasModalOpen} onClose={() => setIsCanvasModalOpen(false)} />
           </div>
         </header>
       </div>
