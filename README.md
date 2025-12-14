@@ -75,8 +75,7 @@ Canvas API key (per user)
 
 1. Clone the Repository
 ```bash
-
-git clone https://julieamononce/Balance--Final-Project
+git clone https://github.com/julieamononce/Balance--Final-Project.git
 cd balance
 ```
 3. Install Dependencies
